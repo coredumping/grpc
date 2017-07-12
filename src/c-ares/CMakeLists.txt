@@ -47,3 +47,14 @@ endif()
 
 file(GLOB lib_sources ../../third_party/cares/cares/*.c)
 add_library(cares ${lib_sources})
+
+if(NOT CMAKE_INSTALL_LIBDIR)
+  set(CMAKE_INSTALL_LIBDIR "lib")
+endif()
+if(NOT DEFINED CMAKE_INSTALL_CMAKEDIR)
+  set(CMAKE_INSTALL_CMAKEDIR "cmake")
+endif()
+install(TARGETS cares EXPORT cares_targets
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(EXPORT cares_targets DESTINATION ${CMAKE_INSTALL_CMAKEDIR})
