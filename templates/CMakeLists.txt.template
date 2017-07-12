@@ -37,6 +37,7 @@
   # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   <%!
+  set(CMAKE_DEBUG_POSTFIX d)
 
   import re
 
@@ -617,6 +618,25 @@
     )
   endif()
   </%def>
+
+  foreach(binaries
+    check_epollexclusive
+    gen_hpack_tables
+    gen_legal_metadata_characters
+    gen_percent_encoding_tables
+    grpc_create_jwt
+    grpc_csharp_plugin
+    grpc_node_plugin
+    grpc_objective_c_plugin
+    grpc_php_plugin
+    grpc_print_google_default_creds_token
+    grpc_python_plugin
+    grpc_ruby_plugin
+    grpc_verify_jwt
+    protoc
+  )
+    set_target_properties(${binaries} PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+  endforeach()
 
   if (gRPC_INSTALL)
     install(EXPORT gRPCTargets

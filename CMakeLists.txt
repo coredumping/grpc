@@ -45,6 +45,8 @@ set(PACKAGE_TARNAME   "${PACKAGE_NAME}-${PACKAGE_VERSION}")
 set(PACKAGE_BUGREPORT "https://github.com/grpc/grpc/issues/")
 project(${PACKAGE_NAME} C CXX)
 
+set(CMAKE_DEBUG_POSTFIX d)
+
 # Options
 option(gRPC_BUILD_TESTS "Build tests" OFF)
 
@@ -14202,6 +14204,25 @@ endif (gRPC_BUILD_TESTS)
 
 
 
+
+foreach(binaries
+  check_epollexclusive
+  gen_hpack_tables
+  gen_legal_metadata_characters
+  gen_percent_encoding_tables
+  grpc_create_jwt
+  grpc_csharp_plugin
+  grpc_node_plugin
+  grpc_objective_c_plugin
+  grpc_php_plugin
+  grpc_print_google_default_creds_token
+  grpc_python_plugin
+  grpc_ruby_plugin
+  grpc_verify_jwt
+  protoc
+)
+  set_target_properties(${binaries} PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+endforeach()
 
 if (gRPC_INSTALL)
   install(EXPORT gRPCTargets
