@@ -1,6 +1,6 @@
 [submodule "third_party/zlib"]
 	path = third_party/zlib
-	url = https://github.com/madler/zlib
+	url = https://github.com/coredumping/zlib.git
 [submodule "third_party/protobuf"]
 	path = third_party/protobuf
 	url = https://github.com/google/protobuf.git
@@ -13,7 +13,7 @@
 	url = https://github.com/google/googletest.git
 [submodule "third_party/boringssl"]
 	path = third_party/boringssl
-	url = https://github.com/google/boringssl.git
+	url = https://github.com/coredumping/boringssl.git
 [submodule "third_party/benchmark"]
 	path = third_party/benchmark
 	url = https://github.com/google/benchmark
